@@ -78,7 +78,7 @@ def remove_pet_by_name(defined_info, passed_in_name)
               next
             elsif
               pet[:name] == passed_in_name
-              p pet
+              # p pet
               pets_array.delete(pet)
             else
               p pet + "none existent pet!"
