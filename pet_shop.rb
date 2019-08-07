@@ -49,22 +49,39 @@ def pets_by_breed(defined_info, passed_in_breed)
   return pets_info_by_breed
 end
 
-def find_pet_by_name(defined_info, passed_in_name)
-  pets_array = defined_info[:pets]
-  #p passed_in_name
-  found_pet_by_name = Hash.new
-  found_pet_by_name[:name] = nil
+# **** THE TEACHERS SOLUTION - WORKS OK ****
+# def find_pet_by_name(pet_shop, pet_name)
+#   match = nil
+#   for pet in pet_shop[:pets]
+#     match = pet if(pet[:name] == pet_name)
+#   end
+#   return match
+# end
 
-  pets_array.each {
-    | pet | if pet[:name] == passed_in_name
-              found_pet_by_name[:name] = passed_in_name
-            elsif pet[:name] != passed_in_name
-              next
-            else
-              found_pet_by_name.reject! {|k, v| v.nil?}
-              found_pet_by_name.reject! {|k, v| k.nil?}
-            end
-  }
+def find_pet_by_name(pet_shop, pet_name)
+  pets_array = pet_shop[:pets]
+  #p passed_in_name
+  # p "pets_array is: "
+  # p pets_array
+  found_pet_by_name = nil
+  #p found_pet_by_name
+  #found_pet_by_name[:name] = nil
+
+  pets_array.each do |pet|
+    if pet[:name] == passed_in_name
+              # p "In equal "
+              # p pet[:name]
+              found_pet_by_name = pet
+            # elsif pet[:name] != passed_in_name
+            #   p "In Not Equal"
+            #   p pet[:name]
+            #   p found_pet_by_name[:name]
+            #   next
+            #else
+            #  found_pet_by_name.reject! {|k, v| v.nil?}
+            #  found_pet_by_name.reject! {|k, v| k.nil?}
+    end
+  end
   #p found_pet_by_name
   return found_pet_by_name
 end
