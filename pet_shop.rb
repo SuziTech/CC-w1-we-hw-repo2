@@ -18,6 +18,11 @@ def add_or_remove_cash(defined_info, change_in_cash)
   # p total_cash(defined_info)
 end
 
+def get_new_pet_name(new_pet_hash)
+    return new_pet_hash.name
+end
+
+
 def pets_sold(defined_info)
   number_of_pets_sold = defined_info[:admin][:pets_sold]
   # p number_of_pets_sold
@@ -60,42 +65,23 @@ end
 
 def find_pet_by_name(pet_shop, pet_name)
   pets_array = pet_shop[:pets]
-  #p passed_in_name
-  # p "pets_array is: "
-  # p pets_array
   found_pet_by_name = nil
-  #p found_pet_by_name
-  #found_pet_by_name[:name] = nil
-
   pets_array.each do |pet|
     if pet[:name] == passed_in_name
-              # p "In equal "
-              # p pet[:name]
-              found_pet_by_name = pet
-            # elsif pet[:name] != passed_in_name
-            #   p "In Not Equal"
-            #   p pet[:name]
-            #   p found_pet_by_name[:name]
-            #   next
-            #else
-            #  found_pet_by_name.reject! {|k, v| v.nil?}
-            #  found_pet_by_name.reject! {|k, v| k.nil?}
+      found_pet_by_name = pet
     end
   end
-  #p found_pet_by_name
   return found_pet_by_name
 end
 
 def remove_pet_by_name(defined_info, passed_in_name)
   pets_array = defined_info[:pets]
-  # p passed_in_name
 
   pets_array.each {
     | pet | if pet[:name] != passed_in_name
               next
             elsif
               pet[:name] == passed_in_name
-              # p pet
               pets_array.delete(pet)
             else
               p pet + "none existent pet!"
@@ -105,9 +91,7 @@ end
 
 def add_pet_to_stock(defined_info, pet_to_add)
   pets_array = defined_info[:pets]
-  # p pets_array
   pets_array = pets_array.unshift(pet_to_add)
-  # p pets_array
 end
 
 def customer_cash(defined_info)
